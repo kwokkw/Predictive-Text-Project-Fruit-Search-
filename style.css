@@ -1,0 +1,49 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:focus {
+ outline: solid 1.5px rgb(255, 90, 0);
+ box-shadow:  0 0 2px 2px #fff;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(to right, rgb(255, 255, 0), rgb(255, 90, 0));
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-container {
+position: relative;
+}
+
+.search-container input {
+ border: none;
+ border-bottom: solid 1.5px rgb(255, 90, 0);
+ background-color:  hsl(39, 96%, 69%);
+ padding: 1rem 0.5rem ;
+}
+.search-container .suggestions {
+  position: absolute;
+  height: auto;
+  min-width: 100%;
+  background-color: hsl(39, 96%, 69%);
+}
+
+ul .has-suggestions {
+  font-weight: bold;
+}
+ul li {
+  list-style: none;
+  padding: 0.25rem 0.5rem
+}
+
+ul li:hover {
+  background-color: rgb(255, 90, 0);
+  cursor: pointer;
+}
