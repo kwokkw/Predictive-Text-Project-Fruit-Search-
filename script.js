@@ -1,8 +1,3 @@
-// ************************************************
-// built-in class: .search-container, .suggestions
-// added class: .has-suggestions
-// ************************************************
-
 // Variables
 const input = document.querySelector("#fruit");
 const suggestions = document.querySelector(".suggestions ul");
@@ -92,13 +87,8 @@ const fruit = [
 
 let results = [];
 
+// Filter The List Based On User Input
 function search(str) {
-  // TODO
-  // filter the fruit list based on whatever user input is in the search box.
-  // If the string in the user input appears ANYWHERE in the fruit name,
-  // it should be added to results list.
-  // It also should not matter if a user types upper or lower case letters.
-  // That means that if a user types “ap” both “Apple” and “Grape” will appear in the results list.
   results = [
     ...fruit.filter((el) => el.toLowerCase().includes(str.toLowerCase())),
   ];
@@ -107,34 +97,47 @@ function search(str) {
 }
 
 function searchHandler(e) {
-  // TODO
-  // Reset
+  const inputVal = e.target.value.trim();
+
+  // Clear the previous suggestions.
   results = [];
   suggestions.textContent = "";
 
-  showSuggestions(search(input.value), input.value);
+  showSuggestions(search(inputVal), inputVal);
 }
 
+// Display The Results List As A Drop Down
 function showSuggestions(results, inputVal) {
-  // TODO
-  // Add item to suggestions
+  const inputLower = inputVal.toLowerCase();
   for (let el of results) {
+    const elLower = el.toLowerCase();
     const li = document.createElement("li");
-    const span = document.createElement("span");
 
-    span.className = "has-suggestions";
+    // search `inputLower` patterns used to match character
+    // `"i"`, search should be case-insensitive - match both uppercase and lowercase
+    const regex = new RegExp(inputLower, "i");
+    // Replace all occurences of `regex` with `<strong>$&</strong>`
+    // `$&` represents the matched substring
+    let fruit = el.replace(regex, "<strong>$&</strong>");
 
-    // for each character that matches, style it bold
-    li.textContent = el;
-
-    li.append(span); // <li><span></span></li>
+    // Alternative to find match
+    // const index = elLower.indexOf(inputLower);
+    // const match = el.substring(index, index + inputVal.length);
+    // const fruit = el.replace(match, "<strong>" + match + "</strong>");
+    li.innerHTML = fruit;
     suggestions.append(li);
-    console.log(li.innerHTML);
   }
+
+  // Hide suggestions
+  if (inputVal === "") {
+    suggestions.textContent = "";
+  }
+
+  li.addEventListener("mouseover", highSuggestion);
+  li.addEventListener("mouseout", removeHighlight);
 }
 
 function useSuggestion(e) {
-  // TODO
   // Populate the search bar.
   input.value = e.target.textContent;
   suggestions.textContent = "";
@@ -142,3 +145,17 @@ function useSuggestion(e) {
 
 input.addEventListener("keyup", searchHandler);
 suggestions.addEventListener("click", useSuggestion);
+
+// Step 8. add event listener hover. function that highlights suggestion. showSuggestion.
+//.css is hover. .js is mouseover
+function highSuggestion(e) {
+  const element = e.target;
+  element.classList.add("highlight");
+  element.classList.remove("remove-highlight");
+}
+
+function removeHighlight(e) {
+  const element = e.target;
+  element.classList.add("remove-highlight");
+  element.classList.remove("highlight");
+}

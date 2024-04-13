@@ -6,13 +6,9 @@
   - [Table of contents](#table-of-contents)
   - [Overview](#overview)
     - [The challenge](#the-challenge)
-    - [Links](#links)
   - [My process](#my-process)
     - [Built with](#built-with)
     - [What I learned](#what-i-learned)
-    - [Continued development](#continued-development)
-    - [Useful resources](#useful-resources)
-  - [Author](#author)
   - [Acknowledgments](#acknowledgments)
   - [Time estimate](#time-estimate)
 
@@ -28,9 +24,8 @@ When a user clicks on one of these options, it will populate in the search bar.
 
 ### The challenge
 
-Filter The List Based On User Input
-
-### Links
+- Filter The List Based On User Input
+- Replaces all occurrences within the string with the matched substring 
 
 ## My process
 
@@ -67,7 +62,7 @@ Filter The List Based On User Input
 6. Filter The List Based On User Input
 7. Display The Results List As A Drop Down 
    - clear the results array before populating it with new suggestions.
-8. Highlight the suggestion below a user’s cursor (Add an event listener to trigger whenever a user hovers over one of the suggestions in the drop down list. Write a function which highlights the suggestion. Attach this function to the event listener.)????????????????????
+8. Highlight the suggestion below a user’s cursor (Add an event listener to trigger whenever a user hovers over one of the suggestions in the drop down list. Write a function which highlights the suggestion. Attach this function to the event listener.) - For learning purpose.
 9. Populate the search box with a user’s selected suggestion
     - When a user clicks on a suggestion, that string should fill the Search Bar. Add an event listener which triggers when a user clicks. Write a function useSuggestion() to populate the Search Bar with the suggestion. Add this function to the event listener.
 10. Style the Page
@@ -78,7 +73,7 @@ Filter The List Based On User Input
 - JavaScript
 
 ### What I learned
-Pushing a filterd array into array resulting an array of arrays
+Mistake - pushing a filterd array into array resulting an array of arrays
 ``` JS
 function search(str) {
   let results = [];
@@ -89,13 +84,18 @@ function search(str) {
   return results;
 }
 ```
-### Continued development
 
-### Useful resources
-
-## Author
+Regular Expression
+```JS
+// search patterns used to match character
+const regex = new RegExp(inputLower, "i");
+let fruit = el.replace(regex, "<strong>$&</strong>");
+```
+This code replaces all occurrences of the case-insensitive pattern stored in `inputLower` within the string `el` with the matched substring wrapped in `<strong>` tags. The result is stored in the variable fruit
 
 ## Acknowledgments
+
+Springboard Software Engineering Mentor - Sonia
 
 ## Time estimate 
 
@@ -105,4 +105,6 @@ Reality
 -   Session 1: 150 mins
 -   Session 2: 120 mins
 -   Session 3: 140 mins
+-   Session 4: 92 mins
+-   Session 5: 120 mins
 

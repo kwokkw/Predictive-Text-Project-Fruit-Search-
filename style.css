@@ -35,9 +35,6 @@ position: relative;
   background-color: hsl(39, 96%, 69%);
 }
 
-ul .has-suggestions {
-  font-weight: bold;
-}
 ul li {
   list-style: none;
   padding: 0.25rem 0.5rem
